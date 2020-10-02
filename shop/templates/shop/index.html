@@ -1,0 +1,201 @@
+{%extends 'shop/basic.html'%}{%load static%}
+{%block title%}
+Violet | Template
+{%endblock%}
+
+
+{%block body%}
+
+
+<!-- Latest Product Begin -->
+<section class="latest-products spad">
+    <div class="container">
+        <div class="product-filter">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-title">
+                        <h2>Latest Products</h2>
+                    </div>
+                    <ul class="product-controls">
+                        <li data-filter="*">All</li>
+                        <li data-filter=".Mobile">SmartPhones</li>
+                        <li data-filter=".Laptops">Laptops</li>
+                        <li data-filter=".Televisions">TV</li>
+                        <li data-filter=".Accessories">Accesories</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="product-list">
+            {%for i in prod%}
+            <div class="col-lg-3 col-sm-6 mix all {{i.subcategory}}">
+                <div class="single-product-item">
+                    <figure>
+                        <a href="/shop/productview/{{i.id}}"><img src="/media/{{i.image}}" alt=""></a>
+                        <!-- <div class="p-status">new</div> -->
+                    </figure>
+                    <div class="product-text">
+                        <a href="/shop/productview/{{i.id}}"><h6>{{i.product_name}}</h6></a>
+                        <p>&#8377 {{i.price}}</p>
+                    </div>
+                </div>
+            </div>        
+           {%endfor%}                       
+        </div>
+    </div>
+</section>
+<!-- Latest Product End -->
+
+    <!-- Features Section Begin -->
+    <section class="features-section spad">
+    <div class="features-ads">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="single-features-ads first">
+                        <img src="{% static 'img/icons/f-delivery.png' %}" alt="">
+                        <h4>Free shipping</h4>
+                        <p>Fusce urna quam, euismod sit amet mollis quis, vestibulum quis velit. Vesti bulum mal
+                            esuada aliquet libero viverra cursus. </p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="single-features-ads second">
+                        <img src="{% static 'img/icons/coin.png' %}" alt="">
+                        <h4>100% Money back </h4>
+                        <p>Urna quam, euismod sit amet mollis quis, vestibulum quis velit. Vesti bulum mal esuada
+                            aliquet libero viverra cursus. </p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="single-features-ads">
+                        <img src="{% static 'img/icons/chat.png' %}" alt="">
+                        <h4>Online support 24/7</h4>
+                        <p>Urna quam, euismod sit amet mollis quis, vestibulum quis velit. Vesti bulum mal esuada
+                            aliquet libero viverra cursus. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> 
+
+<!-- Features Section End -->
+
+<!-- Logo Section Begin -->
+<div class="logo-section spad">
+    <div class="logo-items owl-carousel">
+        <div class="logo-item">
+            <img src="{% static 'img/logos/logo-1.png'%}" alt="">
+        </div>
+        <div class="logo-item">
+            <img src="{% static 'img/logos/logo-2.png'%}" alt="">
+        </div>
+        <div class="logo-item">
+            <img src="{% static 'img/logos/logo-3.png'%}" alt="">
+        </div>
+        <div class="logo-item">
+            <img src="{% static 'img/logos/logo-4.png'%}" alt="">
+        </div>
+        <div class="logo-item">
+            <img src="{% static 'img/logos/logo-5.png'%}" alt="">
+        </div>
+    </div>
+</div>
+<!-- Logo Section End -->
+
+<!-- Footer Section Begin -->
+<footer class="footer-section spad">
+    <div class="container">
+        <div class="newslatter-form">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form action="#">
+                        <input type="text" placeholder="Your email address">
+                        <button type="submit">Subscribe to our newsletter</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="footer-widget">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h4>About us</h4>
+                        <ul>
+                            <li>About Us</li>
+                            <li>Community</li>
+                            <li>Jobs</li>
+                            <li>Shipping</li>
+                            <li>Contact Us</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h4>Customer Care</h4>
+                        <ul>
+                            <li>Search</li>
+                            <li>Privacy Policy</li>
+                            <li>2019 Lookbook</li>
+                            <li>Shipping & Delivery</li>
+                            <li>Gallery</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h4>Our Services</h4>
+                        <ul>
+                            <li>Free Shipping</li>
+                            <li>Free Returnes</li>
+                            <li>Our Franchising</li>
+                            <li>Terms and conditions</li>
+                            <li>Privacy Policy</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h4>Information</h4>
+                        <ul>
+                            <li>Payment methods</li>
+                            <li>Times and shipping costs</li>
+                            <li>Product Returns</li>
+                            <li>Shipping methods</li>
+                            <li>Conformity of the products</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="social-links-warp">
+        <div class="container">
+            <div class="social-links">
+                <a href="" class="instagram"><i class="fa fa-instagram"></i><span>instagram</span></a>
+                <a href="" class="pinterest"><i class="fa fa-pinterest"></i><span>pinterest</span></a>
+                <a href="" class="facebook"><i class="fa fa-facebook"></i><span>facebook</span></a>
+                <a href="" class="twitter"><i class="fa fa-twitter"></i><span>twitter</span></a>
+                <a href="" class="youtube"><i class="fa fa-youtube"></i><span>youtube</span></a>
+                <a href="" class="tumblr"><i class="fa fa-tumblr-square"></i><span>tumblr</span></a>
+            </div>
+        </div>
+
+<div class="container text-center pt-5">
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+        </div>
+
+
+    </div>
+</footer>
+<!-- Footer Section End -->
+
+{%endblock%}
+
+{%block js%}
+<script>        
+</script>
+{%endblock%}

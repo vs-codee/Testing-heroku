@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function showpage(page)
+        {
+            document.querySelectorAll('div').forEach(div=>{
+                div.style.display='none';
+            });
+            document.querySelector(`#${page}`).style.display='block';            
+        }
+
+        document.addEventListener('DOMContentLoaded',function(){
+            document.querySelectorAll('button').forEach(button=>{
+                button.onclick= function() {
+                    showpage(this.dataset.page);
+                }
+            })
+        })
+    </script>
+    <style>
+    div
+    {
+        display: none;
+    }        
+    </style>
+</head>
+<body>
+    <button onclink="showpage()"data-page="page1">Page 1</button>
+    <button data-page="page2">Page 2</button>
+    <button data-page="page3">Page 3</button>
+    <div class="page" id="page1"><b>This is the page 1</b></div>
+    <div class="page" id="page2"><b>This is the page 2</b></div>
+    <div class="page" id="page3"><b>This is the page 3</b></div>
+    
+</body>
+</html>

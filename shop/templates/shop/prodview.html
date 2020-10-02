@@ -1,0 +1,119 @@
+{%extends 'shop/basic.html'%}
+
+{%block title%}
+Product 
+{%endblock%}
+
+{%block body%}
+{%block css%}
+<style>
+    .section
+    {
+        padding-left: 140px;
+        display: flex;
+        padding-top: 40px;
+    }    
+    .inf-section
+    {
+        padding-top: 40px;
+    }
+    .heading,.price,.desc
+    {
+        padding-top: 20px;
+    }
+    .heading{
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    .price{
+        font-family: monospace;
+    }
+    .addtocart
+    {
+        border-color: grey;
+        border-style:solid;
+        border-radius: 50px;
+        margin-top: 20px;
+        height: 40px;
+        background-color: #ddddd6;        
+        margin-right:20px;
+    }
+    #image
+    {
+        height:466px;
+        width: 466px;
+    }
+    .addtocart:hover{
+        color: green;
+        cursor:pointer;
+    }
+</style>
+{%endblock%}
+    <div class="section">
+        <div class="image-section">
+            <img src="/media/{{product.image}}" alt="Image not showing" id="image">
+        </div>
+        <div class="inf-section">
+            <h2 class="heading">{{product.product_name}}</h2>
+            <h3 id="{{product.id}}" class="price">&#8377 {{product.price}}</h3>
+            <p class="desc">
+                <ul >
+                    <li id="list"></li>
+                </ul>
+            </p>                        
+            <div class="buy">
+                <button id="addcart" class="addtocart" >Add to Cart</button>
+                <button id="buynow" class="addtocart">Buy now</button>    
+            </div>
+        </div>
+    </div>
+<script>
+    let str="";
+    let list=[];
+    {% for i in product.desc %}
+    {
+        if('{{i}}'=='/')
+        {
+            list.push(str);
+            str="";
+        }
+        else
+        str+="{{i}}";        
+    }
+    {% endfor %}
+    for(let i=0;i<list.length;i++)
+    {
+        var node=document.createElement('li');
+        node.appendChild(document.createTextNode(list[i]))
+        document.getElementById('list').appendChild(node);
+    }
+    $('#buynow,#addcart').click(function(){
+        console.log("WORKING");
+        var list={};
+        if(localStorage.getItem('allproducts')==undefined)
+        {
+            localStorage.setItem('allproducts',JSON.stringify(list));
+            console.log("error");
+        }   
+        let x=document.querySelector('.price');
+        id=x.id;
+        console.log("ID: ",id);
+        console.log("X:",x);
+        let allproducts=JSON.parse(localStorage.getItem('allproducts'));        
+        let totalitems=0;
+        console.log(allproducts[id]);
+        if(allproducts[id]==undefined)
+            allproducts[id]=1;
+        else
+            allproducts[id]++;
+        localStorage.setItem('allproducts',JSON.stringify(allproducts));
+        for(let i in allproducts)
+            totalitems+=allproducts[i];
+        localStorage.setItem('totalitems',totalitems);
+        document.getElementById('totalitems').innerHTML=totalitems;
+        if(this.id=="buynow")
+        location.replace("{%url 'cart' %}");                                                                                         
+    });
+    
+
+</script>
+{%endblock%}
