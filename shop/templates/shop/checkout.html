@@ -1,9 +1,25 @@
 {%extends 'shop/basic.html'%}
 
+{%css block%}
+<style>
+    .deliver
+    {
+        border:2px solid black;
+        border-radius: 50px;        
+        background-color: darkgrey;
+        color:black;
+    }
+    .deliver:hover
+    {
+        background-color: lightgrey;
+        color: green;
+    }
+</style>
+{%endblock%}
 {%block body%}
 <div class="container">
 <div class="col my-4">
-    <h2 style="text-align: center; margin-bottom: 20px;">Enter Your Details</h2>
+    <h3 style="text-align: center; margin-bottom: 20px;">Enter Your Details</h3>
     <form method="POST" action="{% url 'checkout' %}">{% csrf_token %}
         <div class="form-row">
             <input type="hidden" id="json" name="json">
@@ -20,10 +36,6 @@
             <label for="address1">Address</label>
             <input type="text" class="form-control" id="address1" name="address1" placeholder="1234 Main St">
         </div>
-        <div class="form-group">
-            <label for="address2">Address 2</label>
-            <input type="text" class="form-control" id="address2" name="address2" placeholder="Apartment, studio, or floor">
-        </div>
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="city">City</label>
@@ -34,7 +46,7 @@
                 <input type="text" class="form-control" id="state" name="state">
             </div>
             <div class="form-group col-md-2">
-                <label for="zipcode">Zip</label>
+                <label for="zipcode">Zip Code</label>
                 <input type="number" class="form-control" id="zipcode" name="zipcode">
             </div>
             <div class="form-group col-md-2">
@@ -42,7 +54,7 @@
                 <input type="number" class="form-control" id="phone" name="phone">
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">Deliver Here</button>
+        <button class="deliver" type="submit">Deliver Here</button>
     </form>
     </div>
 </div>
